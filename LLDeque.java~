@@ -1,0 +1,12 @@
+public class LLDeque<T> implements Deque {
+
+    private int _size;
+    private DLLNode _front, _end;
+    
+    public LLDeque() {
+	_size = 0;
+	_front = null;
+	_end = null;
+    }
+    
+}
