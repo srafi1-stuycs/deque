@@ -1,17 +1,16 @@
-//Shakil Rafi
-//APCS2 pd4
-//HW18 -- on the DLL
-//2017-03-15
+/*****************************************************
+ * class DLLNode
+ * Implements a node, for use in lists and other container classes.
+ *****************************************************/
 
-public class DLLNode 
+public class DLLNode<T> 
 {
-    private String _cargo;    //cargo may only be of type String
-    private DLLNode _nextNode; //pointer to next LLNode
-    private DLLNode _prevNode; //pointer to previous LLNode
+    private T _cargo;    //cargo may only be of type T
+    private DLLNode<T> _nextNode, _prevNode; //pointers to next, prev DLLNodes
+
 
     // constructor -- initializes instance vars
-    public DLLNode( String value, DLLNode prev, DLLNode next ) 
-    {
+    public DLLNode( T value, DLLNode<T> prev, DLLNode<T> next ) {
 	_cargo = value;
 	_nextNode = next;
 	_prevNode = prev;
@@ -19,38 +18,36 @@ public class DLLNode
 
 
     //--------------v  ACCESSORS  v--------------
-    public String getCargo() { return _cargo; }
+    public T getValue() { return _cargo; }
 
-    public DLLNode getNext() { return _nextNode; }
+    public DLLNode<T> getNext() { return _nextNode; }
 
-    public DLLNode getPrev() { return _prevNode; }
-
+    public DLLNode<T> getPrev() { return _prevNode; }
     //--------------^  ACCESSORS  ^--------------
 
 
     //--------------v  MUTATORS  v--------------
-    public String setCargo( String newCargo ) 
-    {
-	String oldCargo = _cargo;
+    public T setValue( T newCargo ) {
+	T foo = getValue();
 	_cargo = newCargo;
-	return oldCargo;
+	return foo;
     }
 
-    public DLLNode setNext( DLLNode newNext ) 
-    {
-	DLLNode oldNode = _nextNode;
+    public DLLNode<T> setNext( DLLNode<T> newNext ) {
+	DLLNode<T> foo = getNext();
 	_nextNode = newNext;
-	return oldNode;
+	return foo;
     }
 
-    public DLLNode setPrev( DLLNode newPrev ) 
-    {
-	DLLNode oldNode = _prevNode;
+    public DLLNode<T> setPrev( DLLNode<T> newPrev ) {
+	DLLNode<T> foo = getPrev();
 	_prevNode = newPrev;
-	return oldNode;
+	return foo;
     }
     //--------------^  MUTATORS  ^--------------
 
+
     // override inherited toString
     public String toString() { return _cargo.toString(); }
-}
+
+}//end class DLLNode
