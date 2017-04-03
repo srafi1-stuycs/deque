@@ -1,6 +1,9 @@
 All Hands on Deque- Shakil Rafi, James Zhang, Nicolas Naing
+
 APCS2 pd4
+
 LAB 02 - All Hands on Deque!
+
 2017-04-03
 
 # Deque
