@@ -23,11 +23,14 @@ public class LLDeque<T> implements Deque<T> {
 
     //adds a new DLLNode to the front of the Deque
     public void addFront(T obj) {
+	//if the queue is empty, set the DLLNode as the front and back
 	if (isEmpty()) {
 	    DLLNode<T> l = new DLLNode<T>(obj, null, null);
 	    _front = l;
 	    _end = l;
-	} else {
+	}
+	//otherwise, set _front as the DLLNode, and point it to the old _front
+	else {
 	    _front = new DLLNode<T>(obj, null, _front);
 	}
 	_size++;
@@ -36,11 +39,17 @@ public class LLDeque<T> implements Deque<T> {
     //removes an DLLNode from the front of the Deque
     //returns the value in that DLLNode
     public T removeFront() {
+	//a temp set to return later
 	T ret = _front.getValue();
+
+	//sets the new _front as the second in line
 	_front = _front.getNext();
 	_size--;
+
+	//if the deque only has one DLLNode to begin with, the deque must now be empty 
 	if (isEmpty())
 	    _end = null;
+	//otherwise, if the deque ends up not empty, have _front point ahead to null
 	else
 	    _front.setPrev(null);
 	return ret;
@@ -53,12 +62,17 @@ public class LLDeque<T> implements Deque<T> {
 
     //addes a new DLLNode to the back of the Deque
     public void addLast(T obj) {
+	//if the deque is empty, set the DLLNode as _front and _end
 	if (isEmpty()) {
 	    DLLNode<T> l = new DLLNode<T>(obj, null, null);
 	    _front = l;
 	    _end = l;
-	} else {
+	}
+	//if deque isn't empty
+	else {
+	    //have _end point to the new DLLNode
 	    _end.setNext(new DLLNode<T>(obj, _end, null));
+	    //set _end to that DLLNode
 	    _end = _end.getNext();
 	}
 	_size++;
@@ -67,11 +81,15 @@ public class LLDeque<T> implements Deque<T> {
     //remove the DLLNode from the end of the Deque
     //returns the value of that DLLNode
     public T removeLast() {
+	//temp storage for later return
 	T ret = _end.getValue();
+	//set _end to the next to last, since the last will be removed
 	_end = _end.getPrev();
 	_size--;
+	//if deque originally has only one DLLNode, this makes sure both _front and _end are null
 	if (isEmpty())
 	    _front = null;
+	//otherwise, set _end pointing to null instead of the removed DLLNode
 	else
 	    _end.setNext(null);
 	return ret;
