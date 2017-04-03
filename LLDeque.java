@@ -1,22 +1,27 @@
 public class LLDeque<T> implements Deque<T> {
 
+    //instance variables
     private int _size;
     private DLLNode<T> _front, _end;
-    
+
+    //constructor
     public LLDeque() {
 	_size = 0;
 	_front = null;
 	_end = null;
     }
 
+    //returns true if the deque is empty
     public boolean isEmpty() {
 	return _size == 0;
     }
 
+    //returns the size
     public int size() {
 	return _size;
     }
 
+    //adds a new DLLNode to the front of the Deque
     public void addFront(T obj) {
 	if (isEmpty()) {
 	    DLLNode<T> l = new DLLNode<T>(obj, null, null);
@@ -28,6 +33,8 @@ public class LLDeque<T> implements Deque<T> {
 	_size++;
     }
 
+    //removes an DLLNode from the front of the Deque
+    //returns the value in that DLLNode
     public T removeFront() {
 	T ret = _front.getValue();
 	_front = _front.getNext();
@@ -39,10 +46,12 @@ public class LLDeque<T> implements Deque<T> {
 	return ret;
     }
 
+    //returns the value in the DLLNode in the front of the Deque
     public T peekFront() {
 	return _front.getValue();
     }
-    
+
+    //addes a new DLLNode to the back of the Deque
     public void addLast(T obj) {
 	if (isEmpty()) {
 	    DLLNode<T> l = new DLLNode<T>(obj, null, null);
@@ -55,6 +64,8 @@ public class LLDeque<T> implements Deque<T> {
 	_size++;
     }
 
+    //remove the DLLNode from the end of the Deque
+    //returns the value of that DLLNode
     public T removeLast() {
 	T ret = _end.getValue();
 	_end = _end.getPrev();
@@ -66,10 +77,12 @@ public class LLDeque<T> implements Deque<T> {
 	return ret;
     }
 
+    //returns the value of the last DLLNode in the Deque
     public T peekLast() {
 	return _end.getValue();
     }
 
+    //prints the Deque with the front on the left and end on the right
     public String toString() {
 	String ret = "FRONT-->";
 	DLLNode<T> curr = _front;
